@@ -15,7 +15,7 @@ function getCityname(event) {
 
 
     getLatLong(cityName);
-
+    
 }
   
     function getLatLong(city){
@@ -36,14 +36,31 @@ function getCityname(event) {
                   console.log(longitude);
                   var lattitude = data.coord.lat;
                   console.log(lattitude);
-                  
+                  getAllWeather(lattitude, longitude);
                 })
                 .catch(function(err) {
                     console.error(err);
                 });
                }
 
-
+               function getAllWeather(lattitude, longitude){
+                let askForWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lattitude + "&lon=" + longitude + "&appid=" + key;
+                            console.log(askForWeather)
+            
+                        
+                            $.ajax({
+                              'url': askForWeather,
+                              'method': 'GET',
+                             
+                            }).then(function (data) {
+                              console.log(data);
+                              
+                              
+                            })
+                            .catch(function(err) {
+                                console.error(err);
+                            });
+                           }
 
                //function printWeather(data, resultBody) {
                     //console.log(data);
