@@ -14,11 +14,11 @@ function getCityname(event) {
 
 
 
-    displayWeatherResults(cityName);
+    getLatLong(cityName);
 
 }
   
-    function displayWeatherResults(city){
+    function getLatLong(city){
     let queryWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key;
                 console.log(queryWeather)
 
@@ -27,23 +27,38 @@ function getCityname(event) {
                   'url': queryWeather,
                   'method': 'GET',
                  
-                }).then(function (response) {
-                  console.log(response);
-                  var businesses = response.businesses;
-                  var weather = document.querySelector("#weather");
-    
-                    var resultBody = document.createElement('div');
-                    resultBody.classList.add('card2');
-                    weather.append(resultBody);
-                //   for (var i = 0; i < 10; i++) {
-                //     // console.log(businesses[i].name);
-                //     // console.log(businesses[i].url);
-                    
-                //     printRes(businesses[i], resultBody);
-                //   }
+                }).then(function (data) {
+                  console.log(data);
+                  console.log(data.main.temp);
+                  console.log(data.coord.lon);
+                  console.log(data.coord.lat);
+                  var longitude = data.coord.lon;
+                  console.log(longitude);
+                  var lattitude = data.coord.lat;
+                  console.log(lattitude);
+                  
                 })
                 .catch(function(err) {
                     console.error(err);
                 });
                }
+
+
+
+               //function printWeather(data, resultBody) {
+                    //console.log(data);
+              
+                //resultBody.append(data);
+                
+                
+                
+              //}
+
+
+            //   var data = data;
+            //   var weather = document.querySelector("#weather");
+
+            //     var resultBody = document.createElement('div');
+            //     resultBody.classList.add('card2');
+            //     weather.append(resultBody);
 
