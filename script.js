@@ -3,6 +3,12 @@ var key = "034a6c6a724325798e1f8e5a33949fe6";
 var cityNameEl = document.querySelector("#cityName");
 var buttonEl = document.querySelector("#submitButton");
 var weatherEl = document.querySelector("#weather");
+var temperatureEl = document.querySelector("#temperature");
+var humidityEl = document.querySelector("#humidity");
+var windEl = document.querySelector("#wind");
+var uviEl = document.querySelector("#uvi");
+var weatherIconEl = document.querySelector("#weatherIcon");
+
 
 buttonEl.addEventListener('click', getCityname);
 
@@ -54,6 +60,8 @@ function getCityname(event) {
                              
                             }).then(function (data) {
                               console.log(data);
+                              console.log(data.current.temp);
+                              console.log(data.current.humidity);
                               
                               
                             })
@@ -62,10 +70,13 @@ function getCityname(event) {
                             });
                            }
 
-               //function printWeather(data, resultBody) {
-                    //console.log(data);
-              
-                //resultBody.append(data);
+               //function displayWeather(data, resultBody) {
+                    //temperatureEl.innerHTML = 
+                    //humidityEl.innerHTML = 
+                    //windEl.innerHTML =        
+                    //uviEl.innerHTML = 
+                    //weatherIconEl.innerHTML =
+               
                 
                 
                 
