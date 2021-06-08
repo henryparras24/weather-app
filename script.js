@@ -50,7 +50,7 @@ function getCityname(event) {
                }
 
                function getAllWeather(lattitude, longitude){
-                let askForWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lattitude + "&lon=" + longitude + "&appid=" + key;
+                let askForWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lattitude + "&lon=" + longitude + "&units=imperial" + "&appid=" + key;
                             console.log(askForWeather)
             
                         
@@ -65,6 +65,9 @@ function getCityname(event) {
                               var weatherDetails = {
                                 cityTemp: data.current.temp,
                                 cityHumidity: data.current.humidity,
+                                cityWind: data.current.wind_speed,
+                                cityUvi: data.current.uvi,
+                                cityWeatherIcon: data.current.weather[0].icon, 
                               }
                               console.log(weatherDetails);
                               displayWeather(weatherDetails);
@@ -77,9 +80,9 @@ function getCityname(event) {
                function displayWeather(weatherDetails) {
                     temperatureEl.innerHTML = weatherDetails.cityTemp;
                     humidityEl.innerHTML = weatherDetails.cityHumidity;
-                    //windEl.innerHTML =        
-                    //uviEl.innerHTML = 
-                    //weatherIconEl.innerHTML =
+                    windEl.innerHTML =  weatherDetails.cityWind;      
+                    uviEl.innerHTML =  weatherDetails.cityUvi;
+                    weatherIconEl.innerHTML = weatherDetails.cityWeatherIcon;
                
                 
                 
