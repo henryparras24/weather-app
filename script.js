@@ -62,17 +62,21 @@ function getCityname(event) {
                               console.log(data);
                               console.log(data.current.temp);
                               console.log(data.current.humidity);
-                              
-                              
+                              var weatherDetails = {
+                                cityTemp: data.current.temp,
+                                cityHumidity: data.current.humidity,
+                              }
+                              console.log(weatherDetails);
+                              displayWeather(weatherDetails);
                             })
                             .catch(function(err) {
                                 console.error(err);
                             });
                            }
 
-               //function displayWeather(data, resultBody) {
-                    //temperatureEl.innerHTML = 
-                    //humidityEl.innerHTML = 
+               function displayWeather(weatherDetails) {
+                    temperatureEl.innerHTML = weatherDetails.cityTemp;
+                    humidityEl.innerHTML = weatherDetails.cityHumidity;
                     //windEl.innerHTML =        
                     //uviEl.innerHTML = 
                     //weatherIconEl.innerHTML =
@@ -80,13 +84,10 @@ function getCityname(event) {
                 
                 
                 
-              //}
+              }
 
 
-            //   var data = data;
-            //   var weather = document.querySelector("#weather");
+            
 
-            //     var resultBody = document.createElement('div');
-            //     resultBody.classList.add('card2');
-            //     weather.append(resultBody);
+            
 
