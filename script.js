@@ -1,5 +1,6 @@
 var key = "034a6c6a724325798e1f8e5a33949fe6";
 
+
 var cityNameEl = document.querySelector("#cityName");
 var buttonEl = document.querySelector("#submitButton");
 var weatherEl = document.querySelector("#weather");
@@ -22,6 +23,7 @@ function getCityname(event) {
 
     getLatLong(cityName);
     
+    
 }
   
     function getLatLong(city){
@@ -43,6 +45,7 @@ function getCityname(event) {
                   var lattitude = data.coord.lat;
                   console.log(lattitude);
                   getAllWeather(lattitude, longitude);
+                  getFiveDay(lattitude, longitude);
                 })
                 .catch(function(err) {
                     console.error(err);
@@ -78,10 +81,10 @@ function getCityname(event) {
                            }
 
                function displayWeather(weatherDetails) {
-                    temperatureEl.innerHTML = weatherDetails.cityTemp;
-                    humidityEl.innerHTML = weatherDetails.cityHumidity;
-                    windEl.innerHTML =  weatherDetails.cityWind;      
-                    uviEl.innerHTML =  weatherDetails.cityUvi;
+                    temperatureEl.innerHTML = `Temp: ${weatherDetails.cityTemp}ºF`;
+                    humidityEl.innerHTML = `Humidity: ${weatherDetails.cityHumidity}`;
+                    windEl.innerHTML =  `Wind: ${weatherDetails.cityWind}`;      
+                    uviEl.innerHTML =  `UVI: ${weatherDetails.cityUvi}`;
                     weatherIconEl.innerHTML = weatherDetails.cityWeatherIcon;
                
                 
@@ -89,8 +92,32 @@ function getCityname(event) {
                 
               }
 
-
+   
             
 
             
 
+              function getFiveDay(lattitude, longitude){
+                let askFiveDay = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lattitude + "&lon=" + longitude + "&units=imperial" + "&appid=" + key;
+                            console.log(askFiveDay)
+            
+                        
+                            $.ajax({
+                              'url': askFiveDay,
+                              'method': 'GET',
+                             
+                            }).then(function (data){
+                              console.log(data);
+                              console.log(data.daily[0].temp.day)  
+                              
+                                //for (var i = 0; i < data.daily[0]length; i++) {
+                                //var days = data.daily[i]}
+                                //console.log(days);
+                                
+                              
+                              
+                            })
+                            .catch(function(err) {
+                                console.error(err);
+                            });
+                           }
