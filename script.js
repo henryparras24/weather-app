@@ -171,6 +171,7 @@ function getCityname(event) {
 
                             var fiveDayWeatherIconBody = document.createElement('div');
                             fiveDayWeatherIconBody.append(fiveDayDetails.fiveDayWeatherIcon);
+                            fiveDayWeatherIconBody.innerHTML = "<img src='https://openweathermap.org/img/w/"+ fiveDayDetails.fiveDayWeatherIcon + ".png'>";
                             fiveDayBody.appendChild(fiveDayWeatherIconBody);
                            }
 
