@@ -11,6 +11,7 @@ var uviEl = document.querySelector("#uvi");
 var weatherIconEl = document.querySelector("#weatherIcon");
 //var momentoEl = document.querySelector("#momento");
 
+
 buttonEl.addEventListener('click', getCityname);
 
 function getCityname(event) {
@@ -109,27 +110,68 @@ function getCityname(event) {
                             }).then(function (data){
                               console.log(data);
                               console.log(data.daily[0].temp.day)  
-                              
-                                for (var i = 0; i < data.daily.length; i++) {
-                                    if (i === 5)  break;
+                              //console.log(data.daily.slice(0,5))
+                              //var fiveDayForecast = data.daily.slice(0,5)  
+                              //console.log(fiveDayForecast.humidity);
+                              //displayWeather(fiveDayForecast[i])}
+                              for (var i = 0; i <  data.daily.length; i++) {
+                                if (i === 5)  break;
                                 var days = data.daily[i]
-                            
                                 
                                 console.log(days);
+                                console.log(days.temp.day);
                                 console.log(days.humidity);
+                                console.log(days.wind_speed);
+                                console.log(days.uvi);
+                                console.log(days.weather[0].icon);
+                                var fiveDayDetails = {
+                                    fiveDayTemp: days.temp.day,
+                                    fiveDayHumidity: days.humidity,
+                                    fiveDayWind: days.wind_speed,
+                                    fiveDayUvi: days.uvi,
+                                    fiveDayWeatherIcon: days.weather[0].icon, 
+                                  
+                                }
+                                displayFiveDay(fiveDayDetails);
                                 
-                            }
-                                //var day= [{
-                                    
+                              }
 
-                                //}]
-
-
-                                
                               
+                             
                               
                             })
                             .catch(function(err) {
                                 console.error(err);
                             });
                            }
+
+
+                           function displayFiveDay(fiveDayDetails, fiveDayBody){
+                            var fiveDayEl = document.querySelector("#fiveDay");
+
+                            var fiveDayBody = document.createElement('div');
+                            fiveDayBody.classList.add('card');
+                            fiveDayEl.append(fiveDayBody);
+
+                            var fiveDayTempBody = document.createElement('div');
+                            fiveDayTempBody.append(fiveDayDetails.fiveDayTemp);
+                            fiveDayBody.appendChild(fiveDayTempBody);
+
+                            var fiveDayHumidityBody = document.createElement('div');
+                            fiveDayHumidityBody.append(fiveDayDetails.fiveDayHumidity);
+                            fiveDayBody.appendChild(fiveDayHumidityBody);
+
+                            var fiveDayWindBody = document.createElement('div');
+                            fiveDayWindBody.append(fiveDayDetails.fiveDayWind);
+                            fiveDayBody.appendChild(fiveDayWindBody);
+
+                            var fiveDayUviBody = document.createElement('div');
+                            fiveDayUviBody.append(fiveDayDetails.fiveDayUvi);
+                            fiveDayBody.appendChild(fiveDayUviBody);
+
+                            var fiveDayWeatherIconBody = document.createElement('div');
+                            fiveDayWeatherIconBody.append(fiveDayDetails.fiveDayWeatherIcon);
+                            fiveDayBody.appendChild(fiveDayWeatherIconBody);
+                           }
+
+                          
