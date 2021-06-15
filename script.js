@@ -1,5 +1,5 @@
 var key = "034a6c6a724325798e1f8e5a33949fe6";
-//var momento = moment().format('dddd, MMMM Do YYYY');
+var momento = moment().format('dddd, MMMM Do YYYY');
 
 var cityNameEl = document.querySelector("#cityName");
 var buttonEl = document.querySelector("#submitButton");
@@ -9,7 +9,7 @@ var humidityEl = document.querySelector("#humidity");
 var windEl = document.querySelector("#wind");
 var uviEl = document.querySelector("#uvi");
 var weatherIconEl = document.querySelector("#weatherIcon");
-//var momentoEl = document.querySelector("#momento");
+var momentoEl = document.querySelector("#momento");
 
 
 buttonEl.addEventListener('click', getCityname);
@@ -87,7 +87,7 @@ function getCityname(event) {
                     windEl.innerHTML =  `Wind: ${weatherDetails.cityWind}`;      
                     uviEl.innerHTML =  `UVI: ${weatherDetails.cityUvi}`;
                     weatherIconEl.innerHTML = "<img src='https://openweathermap.org/img/w/"+ weatherDetails.cityWeatherIcon + ".png'>";
-                    //momentoEl.innerHTML =  `${momento}`;
+                    momentoEl.innerHTML =  `${momento}`;
                 
                 
                 
