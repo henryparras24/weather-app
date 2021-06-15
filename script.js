@@ -151,22 +151,28 @@ function getCityname(event) {
 
                             var fiveDayBody = document.createElement('div');
                             fiveDayBody.classList.add('card');
+                            fiveDayBody.classList.add('bg-secondary');
+                            fiveDayBody.classList.add('text-white');
                             fiveDayEl.append(fiveDayBody);
 
                             var fiveDayTempBody = document.createElement('div');
                             fiveDayTempBody.append(fiveDayDetails.fiveDayTemp);
+                            fiveDayTempBody.innerHTML = `Temp: ${fiveDayDetails.fiveDayTemp}ºF`;
                             fiveDayBody.appendChild(fiveDayTempBody);
 
                             var fiveDayHumidityBody = document.createElement('div');
                             fiveDayHumidityBody.append(fiveDayDetails.fiveDayHumidity);
+                            fiveDayHumidityBody.innerHTML = `Humidity: ${fiveDayDetails.fiveDayHumidity}`;
                             fiveDayBody.appendChild(fiveDayHumidityBody);
 
                             var fiveDayWindBody = document.createElement('div');
                             fiveDayWindBody.append(fiveDayDetails.fiveDayWind);
+                            fiveDayWindBody.innerHTML = `Wind: ${fiveDayDetails.fiveDayWind}`;
                             fiveDayBody.appendChild(fiveDayWindBody);
 
                             var fiveDayUviBody = document.createElement('div');
                             fiveDayUviBody.append(fiveDayDetails.fiveDayUvi);
+                            fiveDayUviBody.innerHTML = `UVI: ${fiveDayDetails.fiveDayUvi}`;
                             fiveDayBody.appendChild(fiveDayUviBody);
 
                             var fiveDayWeatherIconBody = document.createElement('div');
