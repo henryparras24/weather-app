@@ -1,5 +1,5 @@
 var key = "034a6c6a724325798e1f8e5a33949fe6";
-var momento = moment().format('dddd, MMMM Do YYYY');
+var momento = moment().format('MMMM Do YYYY');
 
 var cityNameEl = document.querySelector("#cityName");
 var buttonEl = document.querySelector("#submitButton");
@@ -10,7 +10,7 @@ var windEl = document.querySelector("#wind");
 var uviEl = document.querySelector("#uvi");
 var weatherIconEl = document.querySelector("#weatherIcon");
 var momentoEl = document.querySelector("#momento");
-
+var chosenCityEl = document.querySelector("#chosenCity");
 
 buttonEl.addEventListener('click', getCityname);
 
@@ -41,6 +41,7 @@ function getCityname(event) {
                   console.log(data.main.temp);
                   console.log(data.coord.lon);
                   console.log(data.coord.lat);
+                  console.log(data.name);
                   var longitude = data.coord.lon;
                   console.log(longitude);
                   var lattitude = data.coord.lat;
@@ -83,14 +84,20 @@ function getCityname(event) {
 
                function displayWeather(weatherDetails) {
                     temperatureEl.innerHTML = `Temp: ${weatherDetails.cityTemp}ºF`;
-                    humidityEl.innerHTML = `Humidity: ${weatherDetails.cityHumidity}`;
-                    windEl.innerHTML =  `Wind: ${weatherDetails.cityWind}`;      
+                    humidityEl.innerHTML = `Humidity: ${weatherDetails.cityHumidity}%`;
+                    windEl.innerHTML =  `Wind: ${weatherDetails.cityWind} mph`;      
                     uviEl.innerHTML =  `UVI: ${weatherDetails.cityUvi}`;
                     weatherIconEl.innerHTML = "<img src='https://openweathermap.org/img/w/"+ weatherDetails.cityWeatherIcon + ".png'>";
                     momentoEl.innerHTML =  `${momento}`;
+                    chosenCityEl.innerHTML = `${cityNameEl.value}`;
                 
-                
-                
+                    if (weatherDetails.cityUvi < 5){
+                        uviEl.classList.add("badge1");
+                    } else if (weatherDetails.cityUvi > 5 && weatherDetails.cityUvi <= 7){
+                        uviEl.classList.add("badge2");
+                     } else {
+                        uviEl.classList.add("badge3");
+                    }
               }
 
    
@@ -128,7 +135,7 @@ function getCityname(event) {
                                     fiveDayTemp: days.temp.day,
                                     fiveDayHumidity: days.humidity,
                                     fiveDayWind: days.wind_speed,
-                                    fiveDayUvi: days.uvi,
+                                    //fiveDayUvi: days.uvi,
                                     fiveDayWeatherIcon: days.weather[0].icon, 
                                   
                                 }
@@ -170,10 +177,10 @@ function getCityname(event) {
                             fiveDayWindBody.innerHTML = `Wind: ${fiveDayDetails.fiveDayWind}`;
                             fiveDayBody.appendChild(fiveDayWindBody);
 
-                            var fiveDayUviBody = document.createElement('div');
-                            fiveDayUviBody.append(fiveDayDetails.fiveDayUvi);
-                            fiveDayUviBody.innerHTML = `UVI: ${fiveDayDetails.fiveDayUvi}`;
-                            fiveDayBody.appendChild(fiveDayUviBody);
+                            // var fiveDayUviBody = document.createElement('div');
+                            // fiveDayUviBody.append(fiveDayDetails.fiveDayUvi);
+                            // fiveDayUviBody.innerHTML = `UVI: ${fiveDayDetails.fiveDayUvi}`;
+                            // fiveDayBody.appendChild(fiveDayUviBody);
 
                             var fiveDayWeatherIconBody = document.createElement('div');
                             fiveDayWeatherIconBody.append(fiveDayDetails.fiveDayWeatherIcon);
