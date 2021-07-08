@@ -20,7 +20,8 @@ function getCityname(event) {
     
     console.log(cityName);
 
-
+    storeStuff();
+    renderStuff();
 
     getLatLong(cityName);
     
@@ -46,7 +47,7 @@ function getCityname(event) {
                   console.log(longitude);
                   var lattitude = data.coord.lat;
                   console.log(lattitude);
-                  getAllWeather(lattitude, longitude);
+                  getAllWeather(lattitude, longitude, city);
                   getFiveDay(lattitude, longitude);
                 })
                 .catch(function(err) {
@@ -54,7 +55,7 @@ function getCityname(event) {
                 });
                }
 
-               function getAllWeather(lattitude, longitude){
+               function getAllWeather(lattitude, longitude, city){
                 let askForWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lattitude + "&lon=" + longitude + "&units=imperial" + "&appid=" + key;
                             console.log(askForWeather)
             
@@ -75,21 +76,22 @@ function getCityname(event) {
                                 cityWeatherIcon: data.current.weather[0].icon, 
                               }
                               console.log(weatherDetails);
-                              displayWeather(weatherDetails);
+                              displayWeather(weatherDetails, city);
                             })
                             .catch(function(err) {
                                 console.error(err);
                             });
                            }
 
-               function displayWeather(weatherDetails) {
+               function displayWeather(weatherDetails, city) {
+                    
                     temperatureEl.innerHTML = `Temp: ${weatherDetails.cityTemp}ºF`;
                     humidityEl.innerHTML = `Humidity: ${weatherDetails.cityHumidity}%`;
                     windEl.innerHTML =  `Wind: ${weatherDetails.cityWind} mph`;      
                     uviEl.innerHTML =  `UVI: ${weatherDetails.cityUvi}`;
                     weatherIconEl.innerHTML = "<img src='https://openweathermap.org/img/w/"+ weatherDetails.cityWeatherIcon + ".png'>";
                     momentoEl.innerHTML =  `${momento}`;
-                    chosenCityEl.innerHTML = `${cityNameEl.value}`;
+                    chosenCityEl.innerHTML = `${city}`;
                 
                     if (weatherDetails.cityUvi < 5){
                         uviEl.classList.add("badge1");
@@ -121,6 +123,9 @@ function getCityname(event) {
                               //var fiveDayForecast = data.daily.slice(0,5)  
                               //console.log(fiveDayForecast.humidity);
                               //displayWeather(fiveDayForecast[i])}
+                              var fiveDayEl = document.querySelector("#fiveDay");
+                              fiveDayEl.innerHTML = ""
+
                               for (var i = 0; i <  data.daily.length; i++) {
                                 if (i === 5)  break;
                                 var days = data.daily[i]
@@ -155,6 +160,8 @@ function getCityname(event) {
 
                            function displayFiveDay(fiveDayDetails, fiveDayBody){
                             var fiveDayEl = document.querySelector("#fiveDay");
+                            
+
 
                             var fiveDayBody = document.createElement('div');
                             fiveDayBody.classList.add('card');
@@ -189,3 +196,44 @@ function getCityname(event) {
                            }
 
                           
+
+  function storeStuff(){
+      localStorage.setItem("city", cityNameEl.value)
+
+  }         
+  
+  function renderStuff(){
+    //loop through all the stored cities
+    //document.getElementById("renderCity").innerHTML = localStorage.getItem("city");
+    // 
+    var city = localStorage.getItem("city");
+
+    var searchedCitiesEl = document.querySelector("#searchedCities");
+    
+
+    var renderSearchedCities = document.createElement('div');
+    renderSearchedCities.classList.add('card');
+    renderSearchedCities.classList.add('bg-success');
+    renderSearchedCities.classList.add('text-white');
+    searchedCitiesEl.append(renderSearchedCities);
+
+
+
+    var renderCity = document.createElement('button');
+    renderCity.innerHTML = `Searched Cities:${city}`;
+    renderCity.setAttribute("data-city", city);
+    renderSearchedCities.appendChild(renderCity);
+
+  }
+
+  var searchedCitiesEl = document.querySelector("#searchedCities");
+  searchedCitiesEl.addEventListener("click", function(event){
+    console.log(event.target);
+    if (event.target.matches("button")){
+
+      var citiesss = event.target.getAttribute("data-city");
+      console.log(citiesss);
+      getLatLong(citiesss);
+    }
+
+  })
