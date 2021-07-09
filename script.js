@@ -24,6 +24,14 @@ function getCityname(event) {
     renderStuff();
 
     getLatLong(cityName);
+    // if (cityNameEl.value === "Las Vegas"){
+
+    //   document.body.style.backgroundImage = "url('lasvegaszoom.jpeg')";
+
+    //  } else {
+        
+    //     document.body.style.background = black;
+    //   }
     
     
 }
@@ -213,7 +221,7 @@ function getCityname(event) {
 
     var renderSearchedCities = document.createElement('div');
     renderSearchedCities.classList.add('card');
-    renderSearchedCities.classList.add('bg-success');
+    renderSearchedCities.classList.add('bg-primary');
     renderSearchedCities.classList.add('text-white');
     searchedCitiesEl.append(renderSearchedCities);
 
@@ -237,3 +245,10 @@ function getCityname(event) {
     }
 
   })
+
+  // Background image attempt
+
+  // if (cityNameEl.value === "Los Angeles"){
+
+  //   document.body.style.backgroundImage = "url('lazoom.jpeg')";
+  // }

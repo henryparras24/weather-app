@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Henry's Weather</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="style.css"/>
 </head>
@@ -16,7 +19,7 @@
 
     </form>
 
-    <div class= "card text-white bg-primary" id="weather" style="width: 18rem;">
+    <!-- <div class= "card text-white bg-primary" id="weather" style="width: 18rem;">
          <div class= "card-body">
             <div id = "chosenCity"></div>
             <div id = "momento"></div>
@@ -24,10 +27,22 @@
             <div id = "temperature"></div>
             <div id = "humidity"></div>
             <div id = "wind"></div>
-            <div id = "uvi"></div>
+            <div id = "uvi"></div> -->
             
-        </div>
-    </div>
+            <div class = "card text-white bg-primary" style="width: 18rem;">
+                <div class="card-body">
+                  <h4 id = "chosenCity"></h4>
+                  <h5 id = "momento"></h5>
+                  <div id = "weatherIcon"></div>
+                  <div id = "temperature"></div>
+                  <div id = "humidity"></div>
+                  <div id = "wind"></div>
+                  <div id = "uvi"></div>
+                </div>
+            </div>
+
+        <!-- </div> -->
+    <!-- </div> -->
     <div id = "fiveDay" style="width: 18rem;">
         <p id = "forecast">5 day forecast:</p>
             

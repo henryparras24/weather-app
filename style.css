@@ -11,3 +11,7 @@ body {background-color: black;}
 .badge2 {color: yellow;}
 
 .badge3 {color: red;}
+
+* {font-family: 'Archivo', sans-serif;}
+
+.flexing {display: flex;}
