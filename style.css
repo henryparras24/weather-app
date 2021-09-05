@@ -15,3 +15,7 @@ body {background-color: black;}
 * {font-family: 'Archivo', sans-serif;}
 
 .flexing {display: flex;}
+
+#gradient {background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);}
+
+.gradient5 {background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);}

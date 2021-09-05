@@ -173,7 +173,7 @@ function getCityname(event) {
 
                             var fiveDayBody = document.createElement('div');
                             fiveDayBody.classList.add('card');
-                            fiveDayBody.classList.add('bg-secondary');
+                            fiveDayBody.classList.add('gradient5');
                             fiveDayBody.classList.add('text-white');
                             fiveDayEl.append(fiveDayBody);
 
