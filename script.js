@@ -220,14 +220,18 @@ function getCityname(event) {
     
 
     var renderSearchedCities = document.createElement('div');
-    renderSearchedCities.classList.add('card');
-    renderSearchedCities.classList.add('bg-primary');
-    renderSearchedCities.classList.add('text-white');
+    // renderSearchedCities.classList.add('card');
+    // renderSearchedCities.classList.add('bg-primary');
+    // renderSearchedCities.classList.add('text-white');
     searchedCitiesEl.append(renderSearchedCities);
 
 
 
     var renderCity = document.createElement('button');
+    renderCity.classList.add('btn-outline-primary');
+    renderCity.classList.add('text-white');
+    renderCity.classList.add('btn');
+    renderCity.classList.add('buttonMargin');
     renderCity.innerHTML = `Searched Cities:${city}`;
     renderCity.setAttribute("data-city", city);
     renderSearchedCities.appendChild(renderCity);

@@ -19,3 +19,17 @@ body {background-color: black;}
 #gradient {background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);}
 
 .gradient5 {background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);}
+
+.buttonMargin {margin-left: 23px;}
+
+#inputStuff {margin-left: 23px; margin-top: 10px;}
+
+.inputSize {width: 55%;}
+
+.padd {padding: 4px;}
+
+@media screen and (min-width: 768px) {
+    .inputSize {
+      width: 33%;
+    }
+  }
