@@ -1,5 +1,7 @@
 var key = "034a6c6a724325798e1f8e5a33949fe6";
-var momento = moment().format('MMMM Do YYYY');
+var momento = moment().format('dddd');
+var moment5day = [moment().add(1, 'days').format("dddd"), moment().add(2, 'days').format("dddd"), moment().add(3, 'days').format("dddd"), moment().add(4, 'days').format("dddd"), moment().add(5, 'days').format("dddd")]
+
 
 var cityNameEl = document.querySelector("#cityName");
 var buttonEl = document.querySelector("#submitButton");
@@ -57,6 +59,7 @@ function getCityname(event) {
                   console.log(lattitude);
                   getAllWeather(lattitude, longitude, city);
                   getFiveDay(lattitude, longitude);
+                  getFiveDayTemp(lattitude, longitude);
                 })
                 .catch(function(err) {
                     console.error(err);
@@ -134,6 +137,18 @@ function getCityname(event) {
                               var fiveDayEl = document.querySelector("#fiveDay");
                               fiveDayEl.innerHTML = ""
 
+                              var fiveDayMomentEl = document.querySelector("#fiveDayMoment");
+                              fiveDayMomentEl.innerHTML = ""
+                              
+                              for (var i = 0; i < moment5day.length; i++) {
+
+                                var moments = moment5day[i]
+
+                                console.log(moments)
+
+                                renderMoments(moments);
+                              }
+
                               for (var i = 0; i <  data.daily.length; i++) {
                                 if (i === 5)  break;
                                 var days = data.daily[i]
@@ -165,44 +180,133 @@ function getCityname(event) {
                             });
                            }
 
+                          
+              function getFiveDayTemp(lattitude, longitude){
+                let askFiveDay = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lattitude + "&lon=" + longitude + "&units=imperial" + "&appid=" + key;
+                            console.log(askFiveDay)
+            
+                        
+                            $.ajax({
+                              'url': askFiveDay,
+                              'method': 'GET',
+                             
+                            }).then(function (data){
+                              console.log(data);
+                              console.log(data.daily[0].temp.day)  
+                              //console.log(data.daily.slice(0,5))
+                              //var fiveDayForecast = data.daily.slice(0,5)  
+                              //console.log(fiveDayForecast.humidity);
+                              //displayWeather(fiveDayForecast[i])}
+                              var fiveDayEl = document.querySelector("#fiveDayTemp");
+                              fiveDayEl.innerHTML = ""
+
+                            
+                              for (var i = 0; i <  data.daily.length; i++) {
+                                if (i === 5)  break;
+                                var days = data.daily[i]
+                                
+                                console.log(days);
+                                console.log(days.temp.day);
+                                console.log(days.humidity);
+                                console.log(days.wind_speed);
+                                console.log(days.uvi);
+                                console.log(days.weather[0].icon);
+                                var fiveDayDetails = {
+                                    fiveDayTemp: days.temp.day,
+                                    fiveDayHumidity: days.humidity,
+                                    fiveDayWind: days.wind_speed,
+                                    //fiveDayUvi: days.uvi,
+                                    fiveDayWeatherIcon: days.weather[0].icon, 
+                                  
+                                }
+                                displayFiveDayTemp(fiveDayDetails);
+                                
+                              }
+
+                              
+                             
+                              
+                            })
+                            .catch(function(err) {
+                                console.error(err);
+                            });
+                           }
+
+
+                           function renderMoments(moments){
+                            var fiveDayEl = document.querySelector("#fiveDayMoment");
+
+                            var fiveDayBody = document.createElement('div');
+                            fiveDayBody.classList.add('heightForty');
+                            fiveDayBody.classList.add('paddington');
+                            // fiveDayBody.classList.add('roundedCorners');
+                            // fiveDayBody.classList.add('leGrey');
+                            fiveDayBody.classList.add('marginFiveDay');
+                            fiveDayBody.classList.add('text-white');
+                            fiveDayEl.append(fiveDayBody);
+
+                            var fiveDayMomentBody = document.createElement('div');
+                            fiveDayMomentBody.append(moments);
+                            fiveDayMomentBody.innerHTML = `${moments}`;
+                            fiveDayBody.appendChild(fiveDayMomentBody);
+                           }
+
+
 
                            function displayFiveDay(fiveDayDetails, fiveDayBody){
                             var fiveDayEl = document.querySelector("#fiveDay");
                             
-
-
                             var fiveDayBody = document.createElement('div');
-                            fiveDayBody.classList.add('card');
-                            fiveDayBody.classList.add('gradient5');
+                            // fiveDayBody.classList.add('card');
+                            fiveDayBody.classList.add('marginFiveDayIcon');
                             fiveDayBody.classList.add('text-white');
                             fiveDayEl.append(fiveDayBody);
 
-                            var fiveDayTempBody = document.createElement('div');
-                            fiveDayTempBody.append(fiveDayDetails.fiveDayTemp);
-                            fiveDayTempBody.innerHTML = `Temp: ${fiveDayDetails.fiveDayTemp}ºF`;
-                            fiveDayBody.appendChild(fiveDayTempBody);
+                            var fiveDayWeatherIconBody = document.createElement('div');
+                            fiveDayWeatherIconBody.classList.add('inputMargin');
+                            fiveDayWeatherIconBody.append(fiveDayDetails.fiveDayWeatherIcon);
+                            fiveDayWeatherIconBody.innerHTML = "<img src='https://openweathermap.org/img/w/"+ fiveDayDetails.fiveDayWeatherIcon + ".png' style='width:40px;height:40px;'>";
+                            fiveDayBody.appendChild(fiveDayWeatherIconBody);
 
-                            var fiveDayHumidityBody = document.createElement('div');
-                            fiveDayHumidityBody.append(fiveDayDetails.fiveDayHumidity);
-                            fiveDayHumidityBody.innerHTML = `Humidity: ${fiveDayDetails.fiveDayHumidity}`;
-                            fiveDayBody.appendChild(fiveDayHumidityBody);
+                            // var fiveDayTempBody = document.createElement('div');
+                            // fiveDayTempBody.append(fiveDayDetails.fiveDayTemp);
+                            // fiveDayTempBody.innerHTML = `${fiveDayDetails.fiveDayTemp}ºF`;
+                            // fiveDayBody.appendChild(fiveDayTempBody);
 
-                            var fiveDayWindBody = document.createElement('div');
-                            fiveDayWindBody.append(fiveDayDetails.fiveDayWind);
-                            fiveDayWindBody.innerHTML = `Wind: ${fiveDayDetails.fiveDayWind}`;
-                            fiveDayBody.appendChild(fiveDayWindBody);
+                            // var fiveDayHumidityBody = document.createElement('div');
+                            // fiveDayHumidityBody.append(fiveDayDetails.fiveDayHumidity);
+                            // fiveDayHumidityBody.innerHTML = `Humidity: ${fiveDayDetails.fiveDayHumidity}`;
+                            // fiveDayBody.appendChild(fiveDayHumidityBody);
+
+                            // var fiveDayWindBody = document.createElement('div');
+                            // fiveDayWindBody.append(fiveDayDetails.fiveDayWind);
+                            // fiveDayWindBody.innerHTML = `Wind: ${fiveDayDetails.fiveDayWind}`;
+                            // fiveDayBody.appendChild(fiveDayWindBody);
 
                             // var fiveDayUviBody = document.createElement('div');
                             // fiveDayUviBody.append(fiveDayDetails.fiveDayUvi);
                             // fiveDayUviBody.innerHTML = `UVI: ${fiveDayDetails.fiveDayUvi}`;
                             // fiveDayBody.appendChild(fiveDayUviBody);
 
-                            var fiveDayWeatherIconBody = document.createElement('div');
-                            fiveDayWeatherIconBody.append(fiveDayDetails.fiveDayWeatherIcon);
-                            fiveDayWeatherIconBody.innerHTML = "<img src='https://openweathermap.org/img/w/"+ fiveDayDetails.fiveDayWeatherIcon + ".png'>";
-                            fiveDayBody.appendChild(fiveDayWeatherIconBody);
-                           }
+                            
+                            }
 
+
+                            function displayFiveDayTemp(fiveDayDetails, fiveDayBody){
+                              var fiveDayEl = document.querySelector("#fiveDayTemp");
+                              
+                              var fiveDayBody = document.createElement('div');
+                              fiveDayBody.classList.add('heightForty');
+                              fiveDayBody.classList.add('paddington');
+                              fiveDayBody.classList.add('marginFiveDay');
+                              fiveDayBody.classList.add('text-white');
+                              fiveDayEl.append(fiveDayBody);
+  
+                              var fiveDayTempBody = document.createElement('div');
+                              fiveDayTempBody.append(fiveDayDetails.fiveDayTemp);
+                              fiveDayTempBody.innerHTML = `${fiveDayDetails.fiveDayTemp}ºF`;
+                              fiveDayBody.appendChild(fiveDayTempBody);
+                            }   
                           
 
   function storeStuff(){

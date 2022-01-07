@@ -1,4 +1,26 @@
-.card{margin-left: 23px;}
+/* .card{margin-left: 23px;} */
+
+.centered{text-align: center;}
+
+.paddington{padding: 7px;}
+
+.heightForty {height: 40px;}
+
+.marginFiveDayIcon {margin-top: 20px;}
+
+.marginFiveDay {margin-top: 20px;}
+
+.inline {display: inline;}
+
+.leGrey{background-color: #303030;}
+
+.container {display: flex; justify-content: center;}
+
+.roundedCorners {border-radius: 20px}
+
+.card {margin: auto}
+
+.fiveDayAlign {margin: auto}
 
 .btn{border-color: dodgerblue;}
 
@@ -34,4 +56,4 @@ body {background-color: black;}
     }
   }
 
-.inputMargin {margin-left: 5px;}
+.inputMargin {margin-left: 15px;}
