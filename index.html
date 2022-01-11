@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Henry's Weather</title>
+    <script src="https://kit.fontawesome.com/e280089553.js" crossorigin="anonymous"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@200&display=swap" rel="stylesheet">
@@ -12,28 +13,17 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <body>
-    <form id="user-form" class="card-body inputMargin">
+    <!-- <form id="user-form" class="card-body inputMargin">
         <input  placeholder="type in city here" name="username" id="cityName" type="text" autofocus="true" class="form-input" />
         <button type="button" id="submitButton" class="btn text-white btn-outline-primary padd" >Get Weather!</button> 
-    </form> 
+    </form>  -->
 
-    <!-- <div class="input-group mb-3 inputSize" id="inputStuff">
-        <input id="cityName" type="text" class="form-control" placeholder="Type in city here">
-        <button id="submitButton" class="btn text-white btn-outline-primary" type="button">Get Weather!</button>
-    </div> -->
-
-
-    <!-- <div class= "card text-white bg-primary" id="weather" style="width: 18rem;">
-         <div class= "card-body">
-            <div id = "chosenCity"></div>
-            <div id = "momento"></div>
-            <div id = "weatherIcon"></div>
-            <div id = "temperature"></div>
-            <div id = "humidity"></div>
-            <div id = "wind"></div>
-            <div id = "uvi"></div> -->
+    <div class="marginSearch container">
+        <input id="cityName" type="text" class="roundedCorners10" placeholder="Search City" style="width: 250px;">
+        <button id="submitButton" class="roundedCorners10 smoke" style="width: 50px;"><i class="fas fa-search"></i></button>
+    </div>
             
-            <div class = "container card text-white bg-primary roundedCorners" id="gradient" style="width: 300px;">
+            <div class = "container card text-white bg-primary roundedCorners gradient" style="width: 300px;">
                 <div class="card-body">
                   <h4 class="centered" id = "chosenCity"></h4>
                   <h5 class="centered" id = "momento"></h5>
@@ -45,9 +35,6 @@
                 </div>
             </div>
 
-        <!-- </div> -->
-    <!-- </div> -->
-    <!-- <h5 id = "forecast">5 day forecast:</h5> -->
     <div class = "container fiveDayAlign gradient5 roundedCorners" style = "width: 300px">
     <h5 id = "fiveDayMoment" style = "width: 9rem;"></h5>
     <div id = "fiveDay" style="width: 9rem;"></div>

@@ -1,4 +1,8 @@
-/* .card{margin-left: 23px;} */
+.marginSearch {margin-top: 10px; margin-bottom: 10px;}
+
+.smoke {background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%); color: white;}
+
+.roundedCorners10 {border-radius: 10px}
 
 .centered{text-align: center;}
 
@@ -22,8 +26,6 @@
 
 .fiveDayAlign {margin: auto}
 
-.btn{border-color: dodgerblue;}
-
 body {background-color: black;}
 
 #forecast {margin-left: 23px; color: white;}
@@ -38,7 +40,7 @@ body {background-color: black;}
 
 .flexing {display: flex;}
 
-#gradient {background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);}
+.gradient {background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%);}
 
 .gradient5 {background: linear-gradient(90deg, #4b6cb7 0%, #182848 100%);}
 
