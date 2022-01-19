@@ -343,11 +343,11 @@ function getCityname(event) {
 
 
     var renderCity = document.createElement('button');
-    renderCity.classList.add('btn-outline-primary');
-    renderCity.classList.add('text-white');
-    renderCity.classList.add('btn');
-    renderCity.classList.add('buttonMargin');
-    renderCity.innerHTML = `Searched Cities:${city}`;
+    renderCity.classList.add('roundedCorners10');
+    renderCity.classList.add('smoke');
+    renderCity.classList.add('buttonBorder');
+    // renderCity.classList.add('marginSearch');
+    renderCity.innerHTML = `<i class="fas fa-search"></i> ${city}`;
     renderCity.setAttribute("data-city", city);
     renderSearchedCities.appendChild(renderCity);
 

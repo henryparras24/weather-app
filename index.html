@@ -20,10 +20,10 @@
 
     <div class="marginSearch container">
         <input id="cityName" type="text" class="roundedCorners10" placeholder="Search City" style="width: 250px;">
-        <button id="submitButton" class="roundedCorners10 smoke" style="width: 50px;"><i class="fas fa-search"></i></button>
+        <button id="submitButton" class="roundedCorners10 smoke buttonBorder" style="width: 50px;"><i class="fas fa-search"></i></button>
     </div>
             
-            <div class = "container card text-white bg-primary roundedCorners gradient" style="width: 300px;">
+            <div class = "container card text-white bg-primary roundedCorners gradient" style="width: 300px; height: 300px;">
                 <div class="card-body">
                   <h4 class="centered" id = "chosenCity"></h4>
                   <h5 class="centered" id = "momento"></h5>
@@ -35,15 +35,16 @@
                 </div>
             </div>
 
-    <div class = "container fiveDayAlign gradient5 roundedCorners" style = "width: 300px">
+    <div class = "container fiveDayAlign gradient5 roundedCorners" style = "width: 300px; height: 300px; margin-top: 10px; margin-bottom: 10px;">
     <h5 id = "fiveDayMoment" style = "width: 9rem;"></h5>
     <div id = "fiveDay" style="width: 9rem;"></div>
     <h5 id = "fiveDayTemp" style="width: 9rem;"></h5>
     </div>
 
-    <div id = "searchedCities" style="width: 18rem;">
-        
+    <div class="container">
+    <div id = "searchedCities" style="width: 300px;">
     </div>
+    </div> 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
