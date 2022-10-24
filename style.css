@@ -2,9 +2,11 @@
 
 .marginSearch {margin-top: 10px; margin-bottom: 10px;}
 
+.marginB {margin-bottom: 10px;}
+
 .smoke {background: linear-gradient(90deg, #00d2ff 0%, #3a47d5 100%); color: white;}
 
-.roundedCorners10 {border-radius: 10px}
+.roundedCorners10 {border-radius: 25px}
 
 .centered{text-align: center;}
 
@@ -52,6 +54,8 @@ body {background-color: black;}
 
 .inputSize {width: 55%;}
 
+.buttonWidthForCities {width: 100%;}
+
 .padd {padding: 3px;}
 
 @media screen and (min-width: 768px) {
@@ -61,3 +65,41 @@ body {background-color: black;}
   }
 
 .inputMargin {margin-left: 15px;}
+
+/* The side navigation menu */
+.sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  background-color: #111; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 40px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 4px 4px 4px 4px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+/* Position and style the close button (top right corner) */
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  margin-top: 1px;
+  right: 1px;
+  font-size: 25px;
+  margin-right: 1px;
+}
+
+.visible {visibility: visible;}
+
+.notVisible {visibility: hidden;}

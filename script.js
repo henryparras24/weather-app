@@ -13,6 +13,8 @@ var uviEl = document.querySelector("#uvi");
 var weatherIconEl = document.querySelector("#weatherIcon");
 var momentoEl = document.querySelector("#momento");
 var chosenCityEl = document.querySelector("#chosenCity");
+var navEl = document.querySelector("#nav")
+var sideNavEl = document.querySelector("#mySidenav")
 
 buttonEl.addEventListener('click', getCityname);
 
@@ -99,6 +101,7 @@ function getCityname(event) {
                               }
                               console.log(weatherDetails);
                               displayWeather(weatherDetails, city);
+                              makeVisible();
                             })
                             .catch(function(err) {
                                 console.error(err);
@@ -334,26 +337,28 @@ function getCityname(event) {
     var searchedCitiesEl = document.querySelector("#searchedCities");
     
 
-    var renderSearchedCities = document.createElement('div');
+    // var renderSearchedCities = document.createElement('div');
     // renderSearchedCities.classList.add('card');
     // renderSearchedCities.classList.add('bg-primary');
     // renderSearchedCities.classList.add('text-white');
-    searchedCitiesEl.append(renderSearchedCities);
+    // searchedCitiesEl.append(renderSearchedCities);
 
 
 
     var renderCity = document.createElement('button');
     renderCity.classList.add('roundedCorners10');
     renderCity.classList.add('smoke');
+    renderCity.classList.add('buttonWidthForCities');
     renderCity.classList.add('buttonBorder');
+    renderCity.classList.add('marginB');
     // renderCity.classList.add('marginSearch');
     renderCity.innerHTML = `<i class="fas fa-search"></i> ${city}`;
     renderCity.setAttribute("data-city", city);
-    renderSearchedCities.appendChild(renderCity);
+    sideNavEl.appendChild(renderCity);
 
   }
 
-  var searchedCitiesEl = document.querySelector("#searchedCities");
+  var searchedCitiesEl = document.querySelector("#mySidenav");
   searchedCitiesEl.addEventListener("click", function(event){
     console.log(event.target);
     if (event.target.matches("button")){
@@ -371,3 +376,22 @@ function getCityname(event) {
 
   //   document.body.style.backgroundImage = "url('lazoom.jpeg')";
   // }
+
+
+navEl.addEventListener('click', openNav);
+
+
+  /* Set the width of the side navigation to 250px */
+function openNav() {
+  document.getElementById("mySidenav").style.width = "250px";
+}
+
+/* Set the width of the side navigation to 0 */
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
+function makeVisible () {
+  document.getElementById("nav").style.visibility = "visible";
+}
+
