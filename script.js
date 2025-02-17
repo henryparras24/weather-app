@@ -52,7 +52,7 @@ function getCityname(event) {
 }
   
     function getLatLong(city){
-    let queryWeather = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + key;
+    let queryWeather = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1" + "&appid=" + key;
                 console.log(queryWeather)
 
             
@@ -62,25 +62,35 @@ function getCityname(event) {
                  
                 }).then(function (data) {
                   console.log(data);
-                  console.log(data.main.temp);
-                  console.log(data.coord.lon);
-                  console.log(data.coord.lat);
-                  console.log(data.name);
-                  var longitude = data.coord.lon;
+                  // loop through array
+
+                  for (var i = 0; i < data.length; i++) {
+                      const firstElement = data[0];
+                  // console.log(data.main.temp);
+                  console.log(firstElement.lon);
+                  console.log(firstElement.lat);
+                  console.log(firstElement.name);
+                  var longitude = firstElement.lon;
                   console.log(longitude);
-                  var lattitude = data.coord.lat;
+                  var lattitude = firstElement.lat;
                   console.log(lattitude);
-                  getAllWeather(lattitude, longitude, city);
+                  var thisCity = firstElement.name  + ", " + firstElement.state;
+                  getAllWeather(lattitude, longitude, thisCity);
                   getFiveDay(lattitude, longitude);
                   getFiveDayTemp(lattitude, longitude);
+
+                  }
                 })
+
+            
+
                 .catch(function(err) {
                     console.error(err);
                 });
                }
 
                function getAllWeather(lattitude, longitude, city){
-                let askForWeather = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lattitude + "&lon=" + longitude + "&units=imperial" + "&appid=" + key;
+                let askForWeather = "https://api.openweathermap.org/data/3.0/onecall?lat=" + lattitude + "&lon=" + longitude + "&units=imperial" + "&appid=" + key;
                             console.log(askForWeather)
             
                         
@@ -133,7 +143,7 @@ function getCityname(event) {
             
 
               function getFiveDay(lattitude, longitude){
-                let askFiveDay = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lattitude + "&lon=" + longitude + "&units=imperial" + "&appid=" + key;
+                let askFiveDay = "https://api.openweathermap.org/data/3.0/onecall?lat=" + lattitude + "&lon=" + longitude + "&units=imperial" + "&appid=" + key;
                             console.log(askFiveDay)
             
                         
@@ -196,7 +206,7 @@ function getCityname(event) {
 
                           
               function getFiveDayTemp(lattitude, longitude){
-                let askFiveDay = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lattitude + "&lon=" + longitude + "&units=imperial" + "&appid=" + key;
+                let askFiveDay = "https://api.openweathermap.org/data/3.0/onecall?lat=" + lattitude + "&lon=" + longitude + "&units=imperial" + "&appid=" + key;
                             console.log(askFiveDay)
             
                         
